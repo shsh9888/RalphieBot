@@ -1,0 +1,12 @@
+lease
+rent
+duration
+room
+rooms
+apartment
+condo
+garage
+pets
+smoking
+patio
+balcony

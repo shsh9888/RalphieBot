@@ -1,0 +1,9 @@
+course
+courses
+class
+distance
+classroom
+fall
+spring
+summer
+credits
