@@ -1,0 +1,9 @@
+{
+  "questionType" : ["what","why","when"],
+  "courses":["classes","class","subject", "csci*"],
+  "semester" :["fall", "spring"],
+  "breadth" : ["category","width"]
+
+
+
+}
