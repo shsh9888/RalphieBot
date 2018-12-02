@@ -20,5 +20,7 @@
   "instructor": "faculty",
   "lecturer": "faculty",
   "lecturers": "faculty",
-  "deadline": "eventype"
+  "deadline": "eventype",
+  "title": "name",
+  "topic": "name"
 }
