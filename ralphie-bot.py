@@ -16,7 +16,7 @@ import nltk
 from nltk.tag import pos_tag
 
 # instantiate Slack client
-slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
+slack_client = SlackClient('xoxb-492314494864-492328869024-zJMTn4Jz6FQ9vGkSMOVV52Ll')
 # starterbot's user ID in Slack: value is assigned after the bot starts up
 starterbot_id = None
 
@@ -64,15 +64,19 @@ def handle_command(command, channel, channel_name):
     result = fetch_from_db(result_dict)
     response = []
 
-
-
+    final_result = "Here's what we found: \n"
+    print("Final result---->", result)
     for document in result: 
-        response.append(dumps(document))
+        if(document["category"]=="courses"):
+            final_result += "Course " + document["name"]+ " is taught by " + document["faculty"] + " in " + document["term"] 
+        if(document["category"]=="event"):
+            final_result += "Event " + document["eventype"]+ " has deadline on " + document["deadline"] 
+        final_result += "\n"
     # Sends the response back to the channel
     slack_client.api_call(
         "chat.postMessage",
         channel=channel,
-        text=dumps(response) or default_response
+        text=(final_result) or default_response
     )
 
 
@@ -88,9 +92,11 @@ def fetch_from_db(result_dict):
         
         # response = db.ralphiebot.find({key : {"$in": val}})
         responseOld = db.ralphiebot.find({key : {"$in": val}})
-        response = {}
-
+        
+        count = 0
         for rr in responseOld:
+            count += 1
+            response = {}
             for key, val in rr.items():
                 key = str(key)
                 val = str(val)
@@ -101,14 +107,14 @@ def fetch_from_db(result_dict):
                 valA=udata.encode("ascii","ignore")
                 response[keyA] = valA
 
-        if bool(response):
-            responses.append(response)
+            if bool(response):
+                responses.append(response)
 
     idL = []
     ans_d={}
 
     # try:
-    print (responses)
+    print ("DB output-------->", responses)
 
     if len(responses) == 1:
         if "_id" not in responses[0]:
@@ -123,7 +129,9 @@ def fetch_from_db(result_dict):
         if bool(res):
             if res['_id'] not in idL:
                 idL.append(res['_id'])
+                ans_d[res['_id']] = res
             else:
+                print("res here----->", res)
                 ans_d[res['_id']] = res
 
     return ans_d.values()

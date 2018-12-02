@@ -10,10 +10,10 @@
   "Fall": "term",
   "courseID": "courseid",
   "course": "courseid",
-  "spring": "term",
+  "Spring": "term",
   "category": "breadthID",
   "width": "breadthID",
   "instructors": "faculty",
   "lecturer": "faculty",
-  "deadline": "event"
+  "deadline": "eventype"
 }
