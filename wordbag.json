@@ -8,12 +8,17 @@
   "subject": "courseid",
   "csci": "courseid",
   "Fall": "term",
+  "fall": "term",
   "courseID": "courseid",
   "course": "courseid",
+  "courses": "courseid",
   "Spring": "term",
+  "spring": "term",
   "category": "breadthID",
   "width": "breadthID",
   "instructors": "faculty",
+  "instructor": "faculty",
   "lecturer": "faculty",
+  "lecturers": "faculty",
   "deadline": "eventype"
 }
