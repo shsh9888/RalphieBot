@@ -64,8 +64,40 @@ def handle_command(command, channel, channel_name):
     result = fetch_from_db(result_dict)
     response = []
 
-    final_result = "Here's what we found: \n"
+    successQuotes = [
+    "Here's what we found: \n",
+    "Ralphie says: \n",
+    "Hey Buff! look what I found: \n",
+    "Acha suno: \n",
+    "Look what the dark side has for you: \n",
+    "After 0.001 ms of processing, I found: \n",
+    "HackCU was fun, look what I found: \n",
+    "There you go hooman: \n"
+    ]
+
+    failureQuotes = [
+    "Ralphie cannot find your answer, but did you know I secretly like you",
+    "Ralphie cannot find your answer, try Google now...",
+    "Ralphie cannot find your answer, btw she like metal",
+    "Ralphie cannot find your answer, have a cookie at the counter!",
+    "Ralphie cannot find your answer, but did you know I secretly like you",
+    "Ralphie cannot find your answer, try Google now...",
+    "Ralphie cannot find your answer, btw she like metal",
+    "Ralphie cannot find your answer, have a cookie at the counter!"
+    ]
+
+    from random import random
+    randomInd = int(random()*len(failureQuotes)-1)
+    if bool(result):
+        final_result = successQuotes[randomInd]
+    else:
+        final_result = failureQuotes[randomInd]
+
+
+    # final_result = "Here's what we found: \n"
     print("Final result---->", result)
+
+
     for document in result: 
         if(document["category"]=="courses"):
             final_result += "Course " + document["name"]+ " is taught by " + document["faculty"] + " in " + document["term"] 
