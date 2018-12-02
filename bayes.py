@@ -15,7 +15,7 @@ import json
 import nltk
 
 # Please download once
-# nltk.download('averaged_perceptron_tagger')
+nltk.download('averaged_perceptron_tagger')
 from nltk.tag import pos_tag
 
 script_dir = os.path.dirname(__file__)
